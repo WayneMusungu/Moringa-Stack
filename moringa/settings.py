@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -38,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bootstrap5'
+    'bootstrap5',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -75,12 +81,25 @@ WSGI_APPLICATION = 'moringa.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'tribune',
+#         'USER': 'wayne',
+#     'PASSWORD':'moringastackers',
+#     }
+# } 
+
+DATABASES={
+   'default':{
+      'ENGINE':'django.db.backends.postgresql_psycopg2',
+      'NAME':'d3i4e9jkm01qd2',
+      'USER':'idtspydomabzqn',
+      'PASSWORD':'b95319e604e4ebdeee706c30bc730f806bdcdbb8493f3790366581f231ae8f6b',
+      'HOST':'ec2-44-197-128-108.compute-1.amazonaws.com',
+      'PORT':'5432',
+   }
+} 
 
 
 # Password validation
@@ -107,7 +126,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Nairobi'
 
 USE_I18N = True
 
@@ -127,3 +146,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REGISTER_REDIRECT_URL='home'
 LOGIN_REDIRECT_URL='home'
+
+cloudinary.config( 
+  cloud_name = "dhmbjiskt", 
+  api_key = "335994163622817", 
+  api_secret = "yoEvtKnCdOIAOkF7vgcTnhcY4Rk",
+  secure = True
+)
