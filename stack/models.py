@@ -15,7 +15,7 @@ class Profile(models.Model):
     email =  models.CharField(max_length=60)
         
     def __str__(self):
-        return self.user 
+        return self.user.username
     
 # class Topic(models.Model):
 #     categories=(('javascript','javascript'),
