@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Profile,Question
+from .models import Profile,Question,Comment
 from django.contrib.auth.models import User
 from turtle import title
 # Create your tests here.
@@ -50,4 +50,19 @@ class QuestionTest(TestCase):
     def test_get_question_by_id(self):
         obtained_question = Question.get_question_by_id(self.new_question.id)
         print(obtained_question)
+        
+        
+class CommentTest(TestCase):
+    def setUp(self):
+        self.new_user = User(username='victor')
+        self.new_user.save()
+        self.new_profile = Profile(email='james@gmail.com',profile_picture='images/picture.jpeg',bio='i love expo',user=self.new_user)
+        self.new_profile.save()
+        self.another_user = User(username='wayne')
+        self.another_user.save()
+        self.new_question = Question(title='requirements', description='requirements not installing',topic='python', user=self.another_user)
+        self.new_question.save()
+        
+        self.new_comment = Comment(user=self.new_profile, question=self.new_question,content='now install')
+        self.new_comment.save()
   
