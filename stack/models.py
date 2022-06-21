@@ -50,6 +50,7 @@ class Question(models.Model):
     #             ('PHP','PHP')
 
     #             )
+    image = CloudinaryField('image')
     topic = models.ForeignKey(Topic, on_delete=models.DO_NOTHING, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=10000)
@@ -80,7 +81,7 @@ class Question(models.Model):
 class Comment(models.Model):
     question = models.ForeignKey(Question, related_name="comment", on_delete=models.CASCADE)
     content = HTMLField()
-    user= models.ForeignKey(Profile, on_delete=models.CASCADE, default=1)
+    user= models.ForeignKey(User, on_delete=models.CASCADE)
     date_created = models.DateTimeField(default=timezone.now)
 
     # def __str__(self):

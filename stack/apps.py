@@ -6,5 +6,5 @@ class StackConfig(AppConfig):
     name = 'stack'
     
     
-    def ready(self):
-        from . import signals
+    # def ready(self):
+    #     from . import signals
