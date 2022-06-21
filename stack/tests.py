@@ -9,8 +9,12 @@ class ProfileTestClass(TestCase):
         self.user = User(id=1, username='james', password='1234')
         self.user.save()
 
-   
-        
-        
-        
+    def test_instance(self):
+        self.assertTrue(isinstance(self.user, User))
+
+    def test_save_user(self):
+        self.user.save()
+
+    def test_delete_user(self):
+        self.user.delete()   
 #
