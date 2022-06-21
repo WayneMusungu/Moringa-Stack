@@ -23,9 +23,12 @@ def home(request):
         Q(description__icontains=q) |
         Q(title__icontains=q)
     )
+
+    comments = Comment.objects.all()
     print(questions)
     context = {
-        'questions': questions
+        'questions': questions,
+        'comments': comments
     }
     return render(request, 'home.html',context)
 
