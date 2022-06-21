@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from . models import Profile, Question, Comment 
 from .forms import ProfileForm
+from django.db.models import Q #allow chaining of queries
 
 
 # Create your views here.
@@ -16,7 +17,16 @@ def welcome(request):
 
 @login_required
 def home(request):
-    return render(request, 'home.html')
+    q = request.GET.get('query') if request.GET.get('query') != None else ''
+    questions = Question.objects.filter(
+        Q(topic__icontains=q) |
+        Q(description__icontains=q) |
+        Q(title__icontains=q)
+    )
+    context = {
+        'questions': questions
+    }
+    return render(request, 'home.html',context)
 
 @login_required(login_url='/accounts/login/')
 def update_profile(request):
