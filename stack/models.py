@@ -46,7 +46,7 @@ class Question(models.Model):
     date_created = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return self.user.title[0:60]
+        return self.title[0:60]
 
 
 class Comment(models.Model):
