@@ -83,22 +83,20 @@ WSGI_APPLICATION = 'moringa.wsgi.application'
 
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'stack',
-#         'USER': 'vic',
-#         'PASSWORD':'sniff',
-#         'HOST':'localhost',
-#         'PORT':'5432',
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'moringastackers',
+#         'USER': 'wayne',
+#     'PASSWORD':'moringastackers',
 #     }
 # } 
 
 DATABASES={
    'default':{
       'ENGINE':'django.db.backends.postgresql_psycopg2',
-      'NAME':'d3i4e9jkm01qd2',
-      'USER':'idtspydomabzqn',
-      'PASSWORD':'b95319e604e4ebdeee706c30bc730f806bdcdbb8493f3790366581f231ae8f6b',
-      'HOST':'ec2-44-197-128-108.compute-1.amazonaws.com',
+      'NAME':'dflp84r64errsj',
+      'USER':'vvrzfzziijlnvt',
+      'PASSWORD':'114cd76a54ed96e5ae2c039c120709fa84d60dafd577ffefd149bbcd5a8a31c8',
+      'HOST':'ec2-3-224-8-189.compute-1.amazonaws.com',
       'PORT':'5432',
    }
 } 
@@ -138,12 +136,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = 'static/'
-STATIC_FILES_DIRS = [os.path.join(BASE_DIR, 'static')],
-MEDIA_URL = 'media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

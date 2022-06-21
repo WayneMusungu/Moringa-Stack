@@ -37,20 +37,25 @@ class Profile(models.Model):
 #     name = models.CharField(max_length=40, choices=categories)
 #     def __str__(self) -> str:
 #         return self.name
-
+class Topic(models.Model):
+    name = models.CharField(max_length=200)
+    def __str__(self) -> str:
+        return self.name
 
 class Question(models.Model):
-    categories=(('javascript','javascript'),
-                ('Python','Python'),
-                ('C++','C++'),
-                ('C','C'),
-                ('PHP','PHP')
+    # categories=(('javascript','javascript'),
+    #             ('Python','Python'),
+    #             ('C++','C++'),
+    #             ('C','C'),
+    #             ('PHP','PHP')
 
-                )
+    #             )
+    image = CloudinaryField('image')
+    topic = models.ForeignKey(Topic, on_delete=models.DO_NOTHING, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=10000)
     description = HTMLField()
-    topic = models.CharField(max_length=40, choices=categories)
+    # topic = models.CharField(max_length=40, choices=categories)
     # topic= models.OneToOneField(Topic, on_delete=models.DO_NOTHING, related_name='topic',default=1)
     date_created = models.DateTimeField(default=timezone.now)
 
@@ -76,7 +81,7 @@ class Question(models.Model):
 class Comment(models.Model):
     question = models.ForeignKey(Question, related_name="comment", on_delete=models.CASCADE)
     content = HTMLField()
-    user= models.ForeignKey(Profile, on_delete=models.CASCADE, default=1)
+    user= models.ForeignKey(User, on_delete=models.CASCADE)
     date_created = models.DateTimeField(default=timezone.now)
 
     # def __str__(self):
