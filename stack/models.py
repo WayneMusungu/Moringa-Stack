@@ -15,7 +15,7 @@ class Profile(models.Model):
     email =  models.CharField(max_length=60)
         
     def __str__(self):
-        return self.user 
+        return self.user.username
     
 # class Topic(models.Model):
 #     categories=(('javascript','javascript'),
@@ -46,7 +46,7 @@ class Question(models.Model):
     date_created = models.DateTimeField(default=timezone.now)   
     
     def __str__(self):
-        return self.user
+        return self.user.username
     
     
 class Comment(models.Model):
@@ -56,4 +56,4 @@ class Comment(models.Model):
     date_created = models.DateTimeField(default=timezone.now)   
 
     def __str__(self):
-        return self.question
+        return self.content[0:50]
