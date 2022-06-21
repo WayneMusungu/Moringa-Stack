@@ -43,8 +43,16 @@
       </div>
     </div>
     <div class="col-md-4 detail-comment">
+      <!-- Button to Open the Modal -->
+      <button
+        class="btn btn-outline-info"
+        data-bs-toggle="modal"
+        data-bs-target="#myModal"
+      >
+        Comment
+      </button>
       {% if comments %}{% for comment in comments %}
-      <div class="card ">
+      <div class="card">
         <div class="card-title">
           <ul class="list-inline">
             <li class="list-inline-item item1">
@@ -73,6 +81,51 @@
         <div class="card-body">{{comment.content}}</div>
       </div>
       {% endfor %}{% endif %}
+    </div>
+  </div>
+</div>
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Add Comment</h4>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form method="POST">
+          {% csrf_token %}
+
+          <div class="form-group">
+            <label for="content" class="form-label"
+              >{{form.content.label}}:</label
+            ><br />
+            {{form.content}}
+          </div>
+
+          <br />
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button class="btn btn-primary" type="submit">Comment</button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>

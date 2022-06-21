@@ -51,4 +51,3 @@ def quiz(request, id):
     quiz= Question.objects.get(id=id)
     comments = Comment.filter_by_question(quiz.id)
     return render(request, 'detail_post.html', locals())
-    
