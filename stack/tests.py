@@ -31,7 +31,7 @@ class QuestionTest(TestCase):
                 ('C++','C++'),
                 ('C','C'),
                 ('PHP','PHP'))
-        self.new_user = User(username='victor')
+        self.new_user = User(username='james')
         self.new_user.save()
         self.new_question = Question(user=self.new_user, title='requirements', description='requirements not installing', topic='python')
         self.new_question.save()
@@ -41,4 +41,13 @@ class QuestionTest(TestCase):
 
     def test_save_question(self):
         self.assertTrue(len(Question.objects.all()) == 1)     
+        
+    def test_delete_question(self):
+        self.new_question.save()
+        self.new_question.delete()
+        self.assertTrue(len(Question.objects.all()) == 0)    
+
+    def test_get_question_by_id(self):
+        obtained_question = Question.get_question_by_id(self.new_question.id)
+        print(obtained_question)
   
