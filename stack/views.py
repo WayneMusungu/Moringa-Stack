@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
+from .models import *
 
 # Create your views here.
 # def welcome(request):
@@ -19,3 +20,9 @@ def home(request):
 def logout_user(request):
    
     return render(request,'welcome.html')
+
+def quiz(request, id):
+    quiz= Question.objects.get(id=id)
+    comments = Comment.filter_by_question(quiz.id)
+    return render(request, 'detail_post.html', locals())
+    
