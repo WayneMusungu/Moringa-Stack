@@ -1,7 +1,7 @@
 from django.test import TestCase
 from .models import Profile
 from django.contrib.auth.models import User
-
+from turtle import title
 # Create your tests here.
 
 from turtle import title
