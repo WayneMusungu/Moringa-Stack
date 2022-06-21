@@ -93,10 +93,10 @@ WSGI_APPLICATION = 'moringa.wsgi.application'
 DATABASES={
    'default':{
       'ENGINE':'django.db.backends.postgresql_psycopg2',
-      'NAME':'d3i4e9jkm01qd2',
-      'USER':'idtspydomabzqn',
-      'PASSWORD':'b95319e604e4ebdeee706c30bc730f806bdcdbb8493f3790366581f231ae8f6b',
-      'HOST':'ec2-44-197-128-108.compute-1.amazonaws.com',
+      'NAME':'dflp84r64errsj',
+      'USER':'vvrzfzziijlnvt',
+      'PASSWORD':'114cd76a54ed96e5ae2c039c120709fa84d60dafd577ffefd149bbcd5a8a31c8',
+      'HOST':'ec2-3-224-8-189.compute-1.amazonaws.com',
       'PORT':'5432',
    }
 } 

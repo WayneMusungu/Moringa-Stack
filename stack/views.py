@@ -18,11 +18,11 @@ def welcome(request):
 @login_required
 def home(request):
     q = request.GET.get('query') if request.GET.get('query') != None else ''
-    questions = Question.objects.filter(
-        Q(topic__icontains=q) |
-        Q(description__icontains=q) |
-        Q(title__icontains=q)
-    )
+    questions = Question.objects.all()
+    #     Q(topic__icontains=q) |
+    #     Q(description__icontains=q) |
+    #     Q(title__icontains=q)
+    # )
     print(questions)
     context = {
         'questions': questions
