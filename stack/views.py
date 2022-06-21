@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
-from . models import Profile, Question, Comment 
+from . models import Profile, Question, Comment
 from .forms import ProfileForm
 from django.db.models import Q #allow chaining of queries
 
@@ -11,18 +11,19 @@ from django.db.models import Q #allow chaining of queries
 # def welcome(request):
 #     return HttpResponse('Welcome to the login page')
 def welcome(request):
-    
+
     return render(request, 'welcome.html')
 
 
 @login_required
 def home(request):
     q = request.GET.get('query') if request.GET.get('query') != None else ''
-    questions = Question.objects.filter(
-        Q(topic__icontains=q) |
-        Q(description__icontains=q) |
-        Q(title__icontains=q)
-    )
+    questions = Question.objects.all()
+    #     Q(topic__icontains=q) |
+    #     Q(description__icontains=q) |
+    #     Q(title__icontains=q)
+    # )
+    print(questions)
     context = {
         'questions': questions
     }
@@ -32,7 +33,7 @@ def home(request):
 def update_profile(request):
     current_user = request.user
     form = ProfileForm(request.POST, request.FILES)
-    if request.method == 'POST':  
+    if request.method == 'POST':
         if form.is_valid():
             details = form.save(commit=False)
             details.user = request.user
