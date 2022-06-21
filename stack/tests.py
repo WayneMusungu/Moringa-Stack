@@ -4,17 +4,14 @@ from django.contrib.auth.models import User
 
 # Create your tests here.
 
-class ProfileTestClass(TestCase):
+from turtle import title
+from django.test import TestCase
+from .models import *
+
+# Create your tests here.
+class ProfileTest(TestCase):
     def setUp(self):
-        self.user = User(id=1, username='james', password='1234')
-        self.user.save()
-
-    def test_instance(self):
-        self.assertTrue(isinstance(self.user, User))
-
-    def test_save_user(self):
-        self.user.save()
-
-    def test_delete_user(self):
-        self.user.delete()   
-#
+        self.new_user = User(username='james')
+        self.new_user.save()
+        self.new_profile = Profile(email='james@gmail.com',profile_picture='images/picture.jpeg',bio='read your oowe',user=self.new_user)
+        self.new_profile.save()
