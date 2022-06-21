@@ -17,7 +17,7 @@ class Profile(models.Model):
     # def __str__(self):
     #     return self.user 
     def __str__(self):
-        return f'{self.user.username} Profile'
+        return self.user.username
     
     
     def save_profile(self):
@@ -54,10 +54,8 @@ class Question(models.Model):
     # topic= models.OneToOneField(Topic, on_delete=models.DO_NOTHING, related_name='topic',default=1)
     date_created = models.DateTimeField(default=timezone.now)   
     
-    # def __str__(self):
-    #     return self.user
     def __str__(self):
-        return f'{self.user.username} Question'
+        return self.user.username
     
     
     def save_question(self):
@@ -70,6 +68,7 @@ class Question(models.Model):
     def get_question_by_id(cls, id):
         quiz = Question.objects.get(id = id)
         return quiz
+        
     
     
 class Comment(models.Model):
@@ -82,7 +81,7 @@ class Comment(models.Model):
     #     return self.question
     
     def __str__(self):
-        return f'{self.question} Question'
+        return self.content[0:50]
     
     
     def save_comment(self):
