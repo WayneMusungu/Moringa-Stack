@@ -65,4 +65,21 @@ class CommentTest(TestCase):
         
         self.new_comment = Comment(user=self.new_profile, question=self.new_question,content='now install')
         self.new_comment.save()
+        
+        
+    def tearDown(self):
+        Comment.objects.all().delete()
+
+    def test_save_comment(self):
+        self.assertTrue(len(Comment.objects.all()) == 1)     
+
+    def test_delete_comment(self):
+        self.new_comment.save()
+        self.new_comment.delete()
+        self.assertTrue(len(Comment.objects.all()) == 0)    
+
+    def test_filter_by_user(self):
+        obtained_comment = Comment.filter_by_question(self.new_comment.question.id).all()
+        print(obtained_comment)
+
   
