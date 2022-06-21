@@ -83,10 +83,12 @@ WSGI_APPLICATION = 'moringa.wsgi.application'
 
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'tribune',
-#         'USER': 'wayne',
-#     'PASSWORD':'moringastackers',
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'stack',
+#         'USER': 'vic',
+#         'PASSWORD':'sniff',
+#         'HOST':'localhost',
+#         'PORT':'5432',
 #     }
 # } 
 
@@ -136,14 +138,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_FILES_DIRS = [os.path.join(BASE_DIR, 'static')],
+MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
