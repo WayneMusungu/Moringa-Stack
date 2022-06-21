@@ -1,12 +1,9 @@
 from django.test import TestCase
-from .models import Profile
+from .models import Profile,Question
 from django.contrib.auth.models import User
 from turtle import title
 # Create your tests here.
 
-from turtle import title
-from django.test import TestCase
-from .models import *
 
 # Create your tests here.
 class ProfileTest(TestCase):
@@ -25,4 +22,23 @@ class ProfileTest(TestCase):
     def test_delete_profile(self):
         self.new_profile.save()
         self.new_profile.delete()
-        self.assertTrue(len(Profile.objects.all()) == 0)    
+        self.assertTrue(len(Profile.objects.all()) == 0)  
+        
+class QuestionTest(TestCase):
+    def setUp(self):
+        categories=(('javascript','javascript'),
+                ('Python','Python'),
+                ('C++','C++'),
+                ('C','C'),
+                ('PHP','PHP'))
+        self.new_user = User(username='victor')
+        self.new_user.save()
+        self.new_question = Question(user=self.new_user, title='requirements', description='requirements not installing', topic='python')
+        self.new_question.save()
+
+    def tearDown(self):
+        Question.objects.all().delete()
+
+    def test_save_question(self):
+        self.assertTrue(len(Question.objects.all()) == 1)     
+  
