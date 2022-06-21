@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'moringa.wsgi.application'
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'tribune',
+#         'NAME': 'moringastackers',
 #         'USER': 'wayne',
 #     'PASSWORD':'moringastackers',
 #     }
