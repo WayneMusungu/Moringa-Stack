@@ -13,9 +13,9 @@ class Profile(models.Model):
     profile_picture = CloudinaryField('image')
     bio = models.CharField(max_length=250)
     email =  models.CharField(max_length=60)
+
         
-    # def __str__(self):
-    #     return self.user 
+ 
     def __str__(self):
         return self.user.username
     
@@ -25,14 +25,14 @@ class Profile(models.Model):
         
     def delete_profile(self):
         self.delete()
-    
+
 # class Topic(models.Model):
 #     categories=(('javascript','javascript'),
 #                 ('Python','Python'),
 #                 ('C++','C++'),
 #                 ('C','C'),
 #                 ('PHP','PHP')
-                
+
 #                 )
 #     name = models.CharField(max_length=40, choices=categories)
 #     def __str__(self) -> str:
@@ -45,17 +45,18 @@ class Question(models.Model):
                 ('C++','C++'),
                 ('C','C'),
                 ('PHP','PHP')
-                
+
                 )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=10000)
     description = HTMLField()
     topic = models.CharField(max_length=40, choices=categories)
     # topic= models.OneToOneField(Topic, on_delete=models.DO_NOTHING, related_name='topic',default=1)
-    date_created = models.DateTimeField(default=timezone.now)   
-    
+    date_created = models.DateTimeField(default=timezone.now)
+
     def __str__(self):
-        return self.user.username
+
+         return self.title[0:60]
     
     
     def save_question(self):
@@ -71,11 +72,12 @@ class Question(models.Model):
         
     
     
+
 class Comment(models.Model):
     question = models.ForeignKey(Question, related_name="comment", on_delete=models.CASCADE)
     content = HTMLField()
     user= models.ForeignKey(Profile, on_delete=models.CASCADE, default=1)
-    date_created = models.DateTimeField(default=timezone.now)   
+    date_created = models.DateTimeField(default=timezone.now)
 
     # def __str__(self):
     #     return self.question
