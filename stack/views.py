@@ -46,3 +46,9 @@ def update_profile(request):
 def logout_user(request):
     logout(request)
     return render(request,'welcome.html')
+
+def quiz(request, id):
+    quiz= Question.objects.get(id=id)
+    comments = Comment.filter_by_question(quiz.id)
+    return render(request, 'detail_post.html', locals())
+    

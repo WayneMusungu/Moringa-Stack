@@ -1,0 +1,79 @@
+{%extends 'base.html'%}{% load static%} {% load bootstrap5 %} {% block content%}
+<div class="container detail-main">
+  <div class="row">
+    <div class="col-md-8 detail-quiz">
+      <div class="card detail-card1">
+        <div class="card-title">
+          <ul class="list-inline">
+            <li class="list-inline-item item1">
+              {% if quiz.user.profile.profile_picture %}
+              <img
+                src="{{quiz.user.profile.profile_picture.url}}"
+                alt="pic"
+                class="img-responsive rounded-pill detail-pic"
+              />
+              {% else %}
+              <img
+                src="{% static 'images/avatar.jpeg'%}"
+                alt="pic"
+                class="img-responsive rounded-pill detail-pic"
+              />
+              {% endif %}
+            </li>
+            <li class="list-inline-item item2">
+              <p>@{{quiz.user.username|title}}</p>
+            </li>
+            <li class="list-inline-item item3">
+              <h5 class="text-center">{{quiz.title}}</h5>
+            </li>
+            <li class="list-inline-item item4">
+              <small class="text-muted detail-date"
+                >{{quiz.date_created|timesince}}</small
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="card-body">{{quiz.description}}</div>
+        <hr />
+        <p class="text-muted detail-p">
+          <i class="fa-solid fa-user-group"></i>
+          {{quiz.comment.count}} comments
+          <span class="detail-topic text-dark">{{quiz.topic}}</span>
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4 detail-comment">
+      {% if comments %}{% for comment in comments %}
+      <div class="card ">
+        <div class="card-title">
+          <ul class="list-inline">
+            <li class="list-inline-item item1">
+              {% if quiz.user.profile.profile_picture %}
+              <img
+                src="{{quiz.user.profile.profile_picture.url}}"
+                alt="pic"
+                class="img-responsive rounded-pill detail-pic"
+              />
+              {% else %}
+              <img
+                src="{% static 'images/avatar.jpeg'%}"
+                alt="pic"
+                class="img-responsive rounded-pill detail-pic"
+              />
+              {% endif %}
+            </li>
+            <li class="list-inline-item item5">
+              @{{comment.user.user.username|title}}
+              <small class="text-muted">
+                {{comment.date_created|timesince}}</small
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="card-body">{{comment.content}}</div>
+      </div>
+      {% endfor %}{% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

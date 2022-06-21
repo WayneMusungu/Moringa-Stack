@@ -1,0 +1,44 @@
+.detail-card1 {
+    background: #F6F7EB;
+}
+
+.detail-pic {
+    height: 55px;
+    width: 55px;
+}
+
+.detail-date {
+    float: right;
+}
+
+.item1 {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.item2 {
+    margin-right: 10px;
+}
+
+.item3 {
+    margin: 10px;
+}
+
+.item4 {
+    float: right;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.detail-p {
+    margin: 10px;
+}
+
+.detail-topic {
+    float: right;
+    text-align: center;
+    /* border: 1px solid red; */
+    width: 300px;
+    border-radius: 10px;
+    background: #D4E4BC;
+}
