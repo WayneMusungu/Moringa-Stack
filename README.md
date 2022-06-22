@@ -19,7 +19,7 @@
 #### Technologies used
     - Python 3.8
     - HTML
-    - C
+    - CSS
     - Bootstrap 5
     - Heroku
     - Postgresql
