@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from . models import Profile, Question, Comment, Topic
-from .forms import CommentForm, ProfileForm
+from .forms import CommentForm, ProfileForm, QuestionForm
 from django.db.models import Q #allow chaining of queries
 from django.contrib.auth.models import User
 
@@ -30,10 +30,19 @@ def home(request):
 
     comments = Comment.objects.all()
     topics = Topic.objects.all()
+    form=QuestionForm()
+    if request.method == 'POST':
+        form=QuestionForm(request.POST, request.FILES)
+        if form.is_valid():
+            q= form.save(commit=False)
+            q.user=request.user
+            q.save()
+            return HttpResponseRedirect(request.path_info)
     context = {
         'questions': questions,
         'comments': comments,
-        'topics': topics
+        'topics': topics,
+        'form': form,
     }
     return render(request, 'home.html',context)
 
