@@ -68,4 +68,7 @@ Run test using the following command
 
 [Go Back to the top](#MORINGA-STACK)
 
+# License
+
+Copyright (c) 2022 [click to view License](LICENSE)
 
