@@ -7,9 +7,9 @@
           <div class="card-header">
             <ul class="list-inline">
               <li class="list-inline-item item1">
-                {% if quiz.user.profile.profile_picture %}
+                {% if question.user.profile.profile_picture %}
                 <img
-                  src="{{quiz.user.profile.profile_picture.url}}"
+                  src="{{question.user.profile.profile_picture.url}}"
                   alt="pic"
                   class="img-responsive rounded-pill detail-pic"
                 />
@@ -22,24 +22,24 @@
                 {% endif %}
               </li>
               <li class="list-inline-item item2">
-                <p>@{{quiz.user.username|title}}</p>
+                <p>@{{question.user.username|title}}</p>
               </li>
               <li class="list-inline-item item3">
-                <h5 class="text-center">{{quiz.title}}</h5>
+                <h5 class="text-center">{{question.title}}</h5>
               </li>
               <li class="list-inline-item detail-date">
                 <small class="text-muted"
-                  >{{quiz.date_created|timesince}}</small
+                  >{{question.date_created|timesince}}</small
                 >
               </li>
             </ul>
           </div>
           <div class="card-body detail-cardbody">
-            <h5 class="card-tittle">{{quiz.description|title}}</h5>
-            {% if quiz.image %}
+            <h5 class="card-tittle">{{question.description|title}}</h5>
+            {% if question.image %}
 
             <img
-              src="{{quiz.image.url}}"
+              src="{{question.image.url}}"
               alt=""
               class="img-responsive detail-image"
             />
@@ -53,9 +53,9 @@
               ><!-- Button to Open the Modal -->
               <a data-bs-toggle="modal" data-bs-target="#myModal">
                 <i class="fa-solid fa-comments"></i> </a
-              >{{quiz.comment.count}} comments</span
+              >{{question.comment.count}} comments</span
             >
-            <span class="detail-topic text-dark">{{quiz.topic}}</span>
+            <span class="detail-topic text-dark">{{question.topic}}</span>
           </div>
         </div>
       </div>
@@ -65,9 +65,9 @@
           <div class="card-header">
             <ul class="list-inline">
               <li class="list-inline-item item1">
-                {% if quiz.user.profile.profile_picture %}
+                {% if question.user.profile.profile_picture %}
                 <img
-                  src="{{quiz.user.profile.profile_picture.url}}"
+                  src="{{question.user.profile.profile_picture.url}}"
                   alt="pic"
                   class="img-responsive rounded-pill detail-pic"
                 />
