@@ -15,7 +15,7 @@
 
 ## Description
 
-Moringa-stack allow user to access to qualitatives and very well curated batch of answers. First of all, it allows user to filter answers who fit with your points of interest . An other useful thing is to filter questions/answers by popularity (upvotes/downvotes)
+Moringa-stack allow user to access to qualitatives and very well curated batch of answers. First of all, it allows user to filter answers who fit with your points of interest . 
 
 #### Technologies used
     - Python 3.8
