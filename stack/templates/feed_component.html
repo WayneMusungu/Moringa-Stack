@@ -6,14 +6,18 @@
                 <!-- user metadata -->
                 <div>
                   <img style="width: 75px; height: 80px;" class="image-fluid rounded-circle account-img-sidebar" src="{{question.user.profile.profile_picture.url}}" alt="{{question.user.username}} profile picture">
-                  <strong class="text-gray-dark small"> @{{question.user.username}}</strong>
+                  <strong class="text-gray-dark small">
+                    <a href="{% url 'user-questions' question.user.id %}">
+                      @{{question.user.username}}
+                    </a>
+                  </strong>
                 </div>
                 <div>
                   <span class="d-block">{{question.date_created|timesince}}</span>
                 </div>
               </div>
               <div class="card-body">
-                <h5 class="card-title"><a href="#">{{question.title}}</a></h5>
+                <h5 class="card-title"><a href="/question/{{question.id}}">{{question.title}}</a></h5>
                 <!-- Question metadata -->
                 <div class=" d-flex justify-content-between border-top py-3">
                   <div>
@@ -30,4 +34,6 @@
             </div>
           </div>
         </div>
+        {% empty %}
+        <h4>No questions, be the first to post a question</h4>
 {% endfor %}

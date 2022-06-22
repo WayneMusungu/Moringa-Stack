@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from . models import Profile, Question, Comment, Topic
 from .forms import CommentForm, ProfileForm, QuestionForm
 from django.db.models import Q #allow chaining of queries
+from django.contrib.auth.models import User
 
 
 # Create your views here.
@@ -17,12 +18,16 @@ def welcome(request):
 
 @login_required
 def home(request):
-    q = request.GET.get('query') if request.GET.get('query') != None else ''
-    questions = Question.objects.all()
-    #     Q(topic__icontains=q) |
-    #     Q(description__icontains=q) |
-    #     Q(title__icontains=q)
-    # )
+    q = request.GET.get('q') if request.GET.get('q') != None else ''
+    # questions = Question.objects.all()
+
+    questions = Question.objects.filter(
+        Q(topic__name__icontains=q) |
+        Q(user__username__icontains=q) |
+        Q(description__icontains=q) |
+        Q(title__icontains=q)
+    )
+
     comments = Comment.objects.all()
     topics = Topic.objects.all()
     form=QuestionForm()
@@ -40,6 +45,7 @@ def home(request):
         'form': form,
     }
     return render(request, 'home.html',context)
+
 
 @login_required(login_url='/accounts/login/')
 def update_profile(request):
@@ -75,3 +81,18 @@ def quiz(request, id):
     else:
         form = CommentForm()
     return render(request, 'detail_post.html', locals())
+
+
+def userQuestions(request,pk):
+    user = User.objects.get(id=pk)
+    questions = user.question_set.all()
+    topics = Topic.objects.all()
+    comments = user.comment_set.all()
+
+    context = {
+        'user':user,
+        'questions':questions,
+        'topics':topics,
+        'comments': comments
+    }
+    return render(request, 'user_questions.html', context)
