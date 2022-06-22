@@ -17,9 +17,10 @@
 
 
 #### Technologies used
-    - Python 3.9
+    - Python 3.8
     - HTML
-    - Bootstrap 3
+    - C
+    - Bootstrap 5
     - Heroku
     - Postgresql
     - Django, Django Rest Framework
