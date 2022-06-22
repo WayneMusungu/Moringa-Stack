@@ -59,6 +59,9 @@ class Question(models.Model):
     # topic = models.CharField(max_length=40, choices=categories)
     # topic= models.OneToOneField(Topic, on_delete=models.DO_NOTHING, related_name='topic',default=1)
     date_created = models.DateTimeField(default=timezone.now)
+    
+    class Meta:
+        ordering = ['-date_created']
 
     def __str__(self):
 
@@ -84,6 +87,9 @@ class Comment(models.Model):
     content = HTMLField()
     user= models.ForeignKey(User, on_delete=models.CASCADE)
     date_created = models.DateTimeField(default=timezone.now)
+    
+    class Meta:
+        ordering = ['-date_created']
 
     # def __str__(self):
     #     return self.question
