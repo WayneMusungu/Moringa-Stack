@@ -8,13 +8,21 @@
 
 - [Description](#Description)
 - [Installation Requirement](#Installation)
-- [Technology Used](#Technology-Used)
+- [Technologies Used](#Technologies-Used)
 - [Reference](#Reference)
 - [Licence](#LICENSE)
 - [Authors Info](#Author-Info)
 
 ## Description
 
+
+#### Technologies used
+    - Python 3.9
+    - HTML
+    - Bootstrap 3
+    - Heroku
+    - Postgresql
+    - Django, Django Rest Framework
 
 [Go Back to the top](#MORINGA-STACK)
 
@@ -57,4 +65,5 @@ Run test using the following command
 ```
 
 [Go Back to the top](#MORINGA-STACK)
+
 
