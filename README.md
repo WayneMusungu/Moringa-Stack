@@ -31,9 +31,13 @@ Install dependancies that will create an environment for the app to run
 #### Create the Database
 In a new terminal, open the postgresql shell with `psql`.
 ```bash
-CREATE DATABASE moringastackers;
+CREATE DATABASE moringastackers; 
 ```
 
+#### Make and run migrations
+```bash
+python3.9 manage.py makemigrations && python3.9 manage.py migrate
+```
 
 
 
