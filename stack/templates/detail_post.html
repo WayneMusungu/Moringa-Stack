@@ -65,9 +65,9 @@
           <div class="card-header">
             <ul class="list-inline">
               <li class="list-inline-item item1">
-                {% if question.user.profile.profile_picture %}
+                {% if user.profile.profile_picture %}
                 <img
-                  src="{{question.user.profile.profile_picture.url}}"
+                  src="{{user.profile.profile_picture.url}}"
                   alt="pic"
                   class="img-responsive rounded-pill detail-pic"
                 />
