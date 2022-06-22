@@ -32,8 +32,14 @@ def home(request):
     }
     return render(request, 'home.html',context)
 
-def question(request):
-    pass
+def question(request, pk):
+    question = Question.objects.get(id=pk)
+    # participants = question.participants.all()
+
+    context = {
+        'question': question
+    }
+    return render(request, 'question.html', context)
 
 @login_required(login_url='/accounts/login/')
 def update_profile(request):
