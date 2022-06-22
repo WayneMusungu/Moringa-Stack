@@ -1,0 +1,59 @@
+.detail-main {
+    background: #f6fff8;
+    height: 100vh;
+    overflow: scroll;
+}
+
+.detail-pic {
+    height: 40px;
+    width: 40px;
+}
+
+.detail-date {
+    float: right;
+    margin-right: 50px;
+}
+
+.detail-image {
+    height: 500px;
+    width: 90%;
+    border-radius: 10px;
+}
+
+.detail-card {
+    background: #F6F7EB;
+    margin-top: 10px;
+}
+
+.detail-cardbody {
+    text-align: center;
+}
+
+.detail-com {
+    margin-left: 50px;
+    cursor: pointer;
+}
+
+.fa-comments {
+    color: #9aa800;
+}
+
+.detail-topic {
+    text-align: center;
+    border: 1px solid #9aa800;
+    width: 150px;
+    margin-right: 50px;
+    background: #D4E4BC;
+    border-radius: 10px;
+    float: right;
+}
+
+.comment-card {
+    background: #F6F7EB;
+    margin-top: 10px;
+}
+
+.modal-content {
+    background: #f6fff8;
+    text-align: center;
+}
