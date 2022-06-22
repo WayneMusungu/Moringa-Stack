@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from . models import Profile, Question, Comment
 from .forms import ProfileForm
 from django.db.models import Q #allow chaining of queries
+from django.core.paginator import Paginator
 
 
 # Create your views here.
@@ -23,9 +24,14 @@ def home(request):
     #     Q(description__icontains=q) |
     #     Q(title__icontains=q)
     # )
-    print(questions)
+    # print(questions)
+    paginator = Paginator(questions,4) # shows 4 questions per page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    # ,{'page_obj': page_obj}
     context = {
-        'questions': questions
+        'questions': questions,
+        'page_obj': page_obj
     }
     return render(request, 'home.html',context)
 
