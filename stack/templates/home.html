@@ -1,46 +1,18 @@
 {%extends 'base.html'%} {% load bootstrap5 %} {% load static%} {% block content%}
 <div class=" container mt-4 ">
   <div class="row gy-5">
-    <div class="col border border-primary">
-      left sidebar
+    <div class="col">
+      <div class="border p-2 rounded shadow">
+        <h4>Browse</h4>
+        {% include 'topic_component.html'%}
+      </div>
     </div>
-    <div class="col-7 border border-primary">
-        {% for question in questions%}
-        <div class="row">
-          <div class="col my-3">
-            <div class="card">
-              <div class="d-flex justify-content-between text-muted py-2 px-3">
-                <!-- user metadata -->
-                <div>
-                  <img class="image-fluid rounded-circle account-img-sidebar" src="#" alt="{{question.user.username}} profile picture">
-                  <strong class="text-gray-dark small"> @{{question.user.username}}</strong>
-                </div>
-                <div>
-                  <span class="d-block">{{question.date_created|timesince}}</span>
-                </div>
-              </div>
-              <div class="card-body">
-                <h5 class="card-title"><a href="#">{{question.title}}</a></h5>
-                <!-- Question metadata -->
-                <div class=" d-flex justify-content-between border-top py-3">
-                  <div>
-                    <i class="bi bi-people"></i>
-                    comments
-                  </div>
-                  <div>
-                    <small class="bg-dark text-white p-2 rounded-pill">
-                      {{question.topic}}
-                    </small>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        {% endfor %}
+    <div class="col-7">
+        {% include 'feed_component.html'%}
     </div>
-    <div class="col border border-primary">
-      right sidebar
+    <div class="col">
+      <h4>Recent activity </h4>
+      {% include 'activity_component.html'%}
     </div>
   </div>
 </div> {% endblock %}

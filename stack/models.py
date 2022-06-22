@@ -50,10 +50,11 @@ class Question(models.Model):
     #             ('PHP','PHP')
 
     #             )
-    image = CloudinaryField('image')
+    image = CloudinaryField('image', blank=True)
     topic = models.ForeignKey(Topic, on_delete=models.DO_NOTHING, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=10000)
+    participants = models.ManyToManyField(User, related_name='participants', blank=True)
     description = HTMLField()
     # topic = models.CharField(max_length=40, choices=categories)
     # topic= models.OneToOneField(Topic, on_delete=models.DO_NOTHING, related_name='topic',default=1)
