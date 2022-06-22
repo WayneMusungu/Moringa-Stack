@@ -72,3 +72,7 @@ Run test using the following command
 
 Copyright (c) 2022 [click to view License](LICENSE)
 
+
+## Authors Info
+#### Scrum Master
+
