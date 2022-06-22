@@ -1,9 +1,9 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, HttpResponseRedirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
-from . models import Profile, Question, Comment
-from .forms import ProfileForm
+from . models import Profile, Question, Comment, Topic
+from .forms import CommentForm, ProfileForm
 from django.db.models import Q #allow chaining of queries
 from django.core.paginator import Paginator
 
@@ -24,15 +24,21 @@ def home(request):
     #     Q(description__icontains=q) |
     #     Q(title__icontains=q)
     # )
-    # print(questions)
-    paginator = Paginator(questions,4) # shows 4 questions per page
+    comments = Comment.objects.all()
+    topics = Topic.objects.all()
+    paginator = Paginator(questions,2) # shows 4 questions per page
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    # ,{'page_obj': page_obj}
     context = {
         'questions': questions,
-        'page_obj': page_obj
+        'comments': comments,
+        'topics': topics,
+        'page_obj': page_obj,
     }
+    # print(questions)
+
+    # ,{'page_obj': page_obj}
+
     return render(request, 'home.html',context)
 
 @login_required(login_url='/accounts/login/')
@@ -55,6 +61,17 @@ def logout_user(request):
     return render(request,'welcome.html')
 
 def quiz(request, id):
-    quiz= Question.objects.get(id=id)
-    comments = Comment.filter_by_question(quiz.id)
+    question = Question.objects.get(id=id)
+    comments = Comment.filter_by_question(question.id)
+    form = CommentForm()
+    if request.method == 'POST':
+        form = CommentForm(request.POST, request.FILES)
+        if form.is_valid():
+            r= form.save(commit=False)
+            r.user=request.user
+            r.question=question
+            r.save()
+            return HttpResponseRedirect(request.path_info)
+    else:
+        form = CommentForm()
     return render(request, 'detail_post.html', locals())
