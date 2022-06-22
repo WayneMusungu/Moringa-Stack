@@ -32,6 +32,9 @@ def home(request):
     }
     return render(request, 'home.html',context)
 
+def question(request):
+    pass
+
 @login_required(login_url='/accounts/login/')
 def update_profile(request):
     current_user = request.user
