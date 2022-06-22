@@ -72,3 +72,9 @@ img {
     padding: 1.3rem 2.5rem;
   }
   
+  nav {
+    display: flex;
+    width: inherit;
+    height: inherit;
+  }
+  
