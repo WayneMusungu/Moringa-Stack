@@ -1,9 +1,9 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, HttpResponseRedirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from . models import Profile, Question, Comment
-from .forms import ProfileForm
+from .forms import CommentForm, ProfileForm
 from django.db.models import Q #allow chaining of queries
 
 
@@ -49,6 +49,17 @@ def logout_user(request):
     return render(request,'welcome.html')
 
 def quiz(request, id):
-    quiz= Question.objects.get(id=id)
-    comments = Comment.filter_by_question(quiz.id)
+    question = Question.objects.get(id=id)
+    comments = Comment.filter_by_question(question.id)
+    form = CommentForm()
+    if request.method == 'POST':
+        form = CommentForm(request.POST, request.FILES)
+        if form.is_valid():
+            r= form.save(commit=False)
+            r.user=request.user
+            r.question=question
+            r.save()
+            return HttpResponseRedirect(request.path_info)
+    else:
+        form = CommentForm()
     return render(request, 'detail_post.html', locals())
