@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect, HttpResponseRedirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
-from . models import Profile, Question, Comment
+from . models import Profile, Question, Comment, Topic
 from .forms import CommentForm, ProfileForm
 from django.db.models import Q #allow chaining of queries
 
@@ -23,9 +23,12 @@ def home(request):
     #     Q(description__icontains=q) |
     #     Q(title__icontains=q)
     # )
-    print(questions)
+    comments = Comment.objects.all()
+    topics = Topic.objects.all()
     context = {
-        'questions': questions
+        'questions': questions,
+        'comments': comments,
+        'topics': topics
     }
     return render(request, 'home.html',context)
 
