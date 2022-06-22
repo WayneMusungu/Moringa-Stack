@@ -10,5 +10,6 @@ urlpatterns=[
     path('accounts/', include('django_registration.backends.one_step.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('logout/', views.logout_user, name='logout'),
-    path('question/<id>',views.quiz )
+    path('question/<id>',views.quiz ),
+    path('questions/user/<str:pk>', views.userQuestions, name='user-questions')
 ]

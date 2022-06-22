@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from . models import Profile, Question, Comment, Topic
 from .forms import CommentForm, ProfileForm
 from django.db.models import Q #allow chaining of queries
+from django.contrib.auth.models import User
 
 
 # Create your views here.
@@ -67,3 +68,18 @@ def quiz(request, id):
     else:
         form = CommentForm()
     return render(request, 'detail_post.html', locals())
+
+
+def userQuestions(request,pk):
+    user = User.objects.get(id=pk)
+    questions = user.question_set.all()
+    topics = Topic.objects.all()
+    comments = user.comment_set.all()
+
+    context = {
+        'user':user,
+        'questions':questions,
+        'topics':topics,
+        'comments': comments
+    }
+    return render(request, 'user_questions.html', context)
