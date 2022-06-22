@@ -1,86 +1,96 @@
 {%extends 'base.html'%}{% load static%} {% load bootstrap5 %} {% block content%}
-<div class="container detail-main">
-  <div class="row">
-    <div class="col-md-8 detail-quiz">
-      <div class="card detail-card1">
-        <div class="card-title">
-          <ul class="list-inline">
-            <li class="list-inline-item item1">
-              {% if quiz.user.profile.profile_picture %}
-              <img
-                src="{{quiz.user.profile.profile_picture.url}}"
-                alt="pic"
-                class="img-responsive rounded-pill detail-pic"
-              />
-              {% else %}
-              <img
-                src="{% static 'images/avatar.jpeg'%}"
-                alt="pic"
-                class="img-responsive rounded-pill detail-pic"
-              />
-              {% endif %}
-            </li>
-            <li class="list-inline-item item2">
-              <p>@{{quiz.user.username|title}}</p>
-            </li>
-            <li class="list-inline-item item3">
-              <h5 class="text-center">{{quiz.title}}</h5>
-            </li>
-            <li class="list-inline-item item4">
-              <small class="text-muted detail-date"
-                >{{quiz.date_created|timesince}}</small
-              >
-            </li>
-          </ul>
+<div class="container-fluid detail-main">
+  <div class="container detail-main">
+    <div class="row">
+      <div class="col-md-8 detail-quiz">
+        <div class="card detail-card">
+          <div class="card-header">
+            <ul class="list-inline">
+              <li class="list-inline-item item1">
+                {% if quiz.user.profile.profile_picture %}
+                <img
+                  src="{{quiz.user.profile.profile_picture.url}}"
+                  alt="pic"
+                  class="img-responsive rounded-pill detail-pic"
+                />
+                {% else %}
+                <img
+                  src="{% static 'images/avatar.jpeg'%}"
+                  alt="pic"
+                  class="img-responsive rounded-pill detail-pic"
+                />
+                {% endif %}
+              </li>
+              <li class="list-inline-item item2">
+                <p>@{{quiz.user.username|title}}</p>
+              </li>
+              <li class="list-inline-item item3">
+                <h5 class="text-center">{{quiz.title}}</h5>
+              </li>
+              <li class="list-inline-item detail-date">
+                <small class="text-muted"
+                  >{{quiz.date_created|timesince}}</small
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="card-body detail-cardbody">
+            <h5 class="card-tittle">{{quiz.description|title}}</h5>
+            {% if quiz.image %}
+
+            <img
+              src="{{quiz.image.url}}"
+              alt=""
+              class="img-responsive detail-image"
+            />
+            {% else %}
+            <p>No Screenshot for this Question.</p>
+            {% endif %}
+          </div>
+
+          <div class="card-footer container text-muted">
+            <span class="detail-com"
+              ><!-- Button to Open the Modal -->
+              <a data-bs-toggle="modal" data-bs-target="#myModal">
+                <i class="fa-solid fa-comments"></i> </a
+              >{{quiz.comment.count}} comments</span
+            >
+            <span class="detail-topic text-dark">{{quiz.topic}}</span>
+          </div>
         </div>
-        <div class="card-body">{{quiz.description}}</div>
-        <hr />
-        <p class="text-muted detail-p">
-          <i class="fa-solid fa-user-group"></i>
-          {{quiz.comment.count}} comments
-          <span class="detail-topic text-dark">{{quiz.topic}}</span>
-        </p>
       </div>
-    </div>
-    <div class="col-md-4 detail-comment">
-      <!-- Button to Open the Modal -->
-      <button
-        class="btn btn-outline-info"
-        data-bs-toggle="modal"
-        data-bs-target="#myModal"
-      >
-        Comment
-      </button>
-      {% if comments %}{% for comment in comments %}
-      <div class="card">
-        <div class="card-title">
-          <ul class="list-inline">
-            <li class="list-inline-item item1">
-              {% if quiz.user.profile.profile_picture %}
-              <img
-                src="{{quiz.user.profile.profile_picture.url}}"
-                alt="pic"
-                class="img-responsive rounded-pill detail-pic"
-              />
-              {% else %}
-              <img
-                src="{% static 'images/avatar.jpeg'%}"
-                alt="pic"
-                class="img-responsive rounded-pill detail-pic"
-              />
-              {% endif %}
-            </li>
-            <li class="list-inline-item item5">
-              @{{comment.user.user.username|title}}
-              <small class="text-muted">
-                {{comment.date_created|timesince}}</small
-              >
-            </li>
-          </ul>
+      <div class="col-md-4 detail-comment">
+        {% if comments %}{% for comment in comments %}
+        <div class="card comment-card">
+          <div class="card-header">
+            <ul class="list-inline">
+              <li class="list-inline-item item1">
+                {% if quiz.user.profile.profile_picture %}
+                <img
+                  src="{{quiz.user.profile.profile_picture.url}}"
+                  alt="pic"
+                  class="img-responsive rounded-pill detail-pic"
+                />
+                {% else %}
+                <img
+                  src="{% static 'images/avatar.jpeg'%}"
+                  alt="pic"
+                  class="img-responsive rounded-pill detail-pic"
+                />
+                {% endif %}
+              </li>
+              <li class="list-inline-item item5">
+                @{{comment.user.username|title}}
+                <small class="text-muted">
+                  {{comment.date_created|timesince}}</small
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="card-body">{{comment.content}}</div>
         </div>
-        <div class="card-body">{{comment.content}}</div>
+        {% endfor %}{% endif %}
       </div>
-      {% endfor %}{% endif %}
     </div>
   </div>
 </div>
@@ -115,10 +125,10 @@
 
           <!-- Modal footer -->
           <div class="modal-footer">
-            <button class="btn btn-primary" type="submit">Comment</button>
+            <button class="btn btn-primary btn-sm" type="submit">Comment</button>
             <button
               type="button"
-              class="btn btn-danger"
+              class="btn btn-danger btn-sm"
               data-bs-dismiss="modal"
             >
               Close
