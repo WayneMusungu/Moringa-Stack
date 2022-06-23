@@ -3,9 +3,13 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from . models import Profile, Question, Comment, Topic
-from .forms import CommentForm, ProfileForm
+from .forms import CommentForm, ProfileForm, QuestionForm
 from django.db.models import Q #allow chaining of queries
+<<<<<<< HEAD
 from django.core.paginator import Paginator
+=======
+from django.contrib.auth.models import User
+>>>>>>> 27970eaed3d6e40c14e35a383fd6b296fe18ed6c
 
 
 # Create your views here.
@@ -18,28 +22,48 @@ def welcome(request):
 
 @login_required
 def home(request):
-    q = request.GET.get('query') if request.GET.get('query') != None else ''
-    questions = Question.objects.all()
-    #     Q(topic__icontains=q) |
-    #     Q(description__icontains=q) |
-    #     Q(title__icontains=q)
-    # )
+    q = request.GET.get('q') if request.GET.get('q') != None else ''
+    # questions = Question.objects.all()
+
+    questions = Question.objects.filter(
+        Q(topic__name__icontains=q) |
+        Q(user__username__icontains=q) |
+        Q(description__icontains=q) |
+        Q(title__icontains=q)
+    )
+
     comments = Comment.objects.all()
     topics = Topic.objects.all()
+<<<<<<< HEAD
     paginator = Paginator(questions,2) # shows 4 questions per page
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
+=======
+    form=QuestionForm()
+    if request.method == 'POST':
+        form=QuestionForm(request.POST, request.FILES)
+        if form.is_valid():
+            q= form.save(commit=False)
+            q.user=request.user
+            q.save()
+            return HttpResponseRedirect(request.path_info)
+>>>>>>> 27970eaed3d6e40c14e35a383fd6b296fe18ed6c
     context = {
         'questions': questions,
         'comments': comments,
         'topics': topics,
+<<<<<<< HEAD
         'page_obj': page_obj,
+=======
+        'form': form,
+>>>>>>> 27970eaed3d6e40c14e35a383fd6b296fe18ed6c
     }
     # print(questions)
 
     # ,{'page_obj': page_obj}
 
     return render(request, 'home.html',context)
+
 
 @login_required(login_url='/accounts/login/')
 def update_profile(request):
@@ -75,3 +99,18 @@ def quiz(request, id):
     else:
         form = CommentForm()
     return render(request, 'detail_post.html', locals())
+
+
+def userQuestions(request,pk):
+    user = User.objects.get(id=pk)
+    questions = user.question_set.all()
+    topics = Topic.objects.all()
+    comments = user.comment_set.all()
+
+    context = {
+        'user':user,
+        'questions':questions,
+        'topics':topics,
+        'comments': comments
+    }
+    return render(request, 'user_questions.html', context)

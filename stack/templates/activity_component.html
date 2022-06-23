@@ -7,7 +7,7 @@
                 <img style="width: 75px; height: 80px;" class="image-fluid rounded-circle account-img-sidebar" src="{{comment.user.profile.profile_picture.url}}" alt="{{comment.user.username}} profile picture">
                 <div class="pb-3 mb-0 small lh-sm w-100">
                   <div class="d-flex">
-                    <a href="#">
+                    <a href="{% url 'user-questions' comment.user.id %}">
                       <strong class="text-gray-dark"> @{{comment.user.username}}</strong>
                     </a>
                   </div>
@@ -21,4 +21,6 @@
             </div>
           </div>
         </div>
+        {% empty %}
+        <h4>No recent activity</h4>
 {% endfor %}

@@ -1,11 +1,16 @@
-
-    {% for topic in topics%}
-        <div class="row my-3">
-            <div class="col">
-                <div class="d-flex justify-content-between">
-                    <p>{{topic}}</p>
-                    <a href="#" class="btn btn-secondary btn-sm">browse</a>
-                </div>
+<div class="d-flex justify-content-between">
+    <p>All</p>
+    <a href="{% url 'home'%}"  style="background-color: #1D3354; color: #FFFFFF;" class="btn btn btn-sm">All</a>
+</div>
+{% for topic in topics%}
+    <div class="row my-3">
+        <div class="col">
+            <div class="d-flex justify-content-between">
+                <p>{{topic}}</p>
+                <a href="{% url 'home'%}?q={{topic.name}}" style="background-color: #1D3354; color: #FFFFFF;" class="btn btn btn-sm">browse</a>
             </div>
         </div>
-    {% endfor %}
+    </div>
+    {% empty %}
+        <h4>No topics yet! be the first to add a topic</h4>
+{% endfor %}
