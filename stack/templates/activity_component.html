@@ -7,11 +7,11 @@
                 <img style="width: 75px; height: 80px;" class="image-fluid rounded-circle account-img-sidebar" src="{{comment.user.profile.profile_picture.url}}" alt="{{comment.user.username}} profile picture">
                 <div class="pb-3 mb-0 small lh-sm w-100">
                   <div class="d-flex">
-                    <a href="{% url 'user-questions' comment.user.id %}">
+                    <a style="text-decoration: none; color: #000000;" href="{% url 'user-questions' comment.user.id %}">
                       <strong class="text-gray-dark"> @{{comment.user.username}}</strong>
                     </a>
                   </div>
-                  <span class="d-block">{{comment.date_created|timesince}}</span>
+                  <span style="color: #000000;" class="d-block">{{comment.date_created|timesince}}</span>
                 </div>
               </div>
               <div class="card-body">
