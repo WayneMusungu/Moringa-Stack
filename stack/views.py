@@ -5,11 +5,8 @@ from django.contrib.auth import authenticate, login, logout
 from . models import Profile, Question, Comment, Topic
 from .forms import CommentForm, ProfileForm, QuestionForm
 from django.db.models import Q #allow chaining of queries
-<<<<<<< HEAD
 from django.core.paginator import Paginator
-=======
 from django.contrib.auth.models import User
->>>>>>> 27970eaed3d6e40c14e35a383fd6b296fe18ed6c
 
 
 # Create your views here.
@@ -34,11 +31,9 @@ def home(request):
 
     comments = Comment.objects.all()
     topics = Topic.objects.all()
-<<<<<<< HEAD
     paginator = Paginator(questions,2) # shows 4 questions per page
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-=======
     form=QuestionForm()
     if request.method == 'POST':
         form=QuestionForm(request.POST, request.FILES)
@@ -47,16 +42,12 @@ def home(request):
             q.user=request.user
             q.save()
             return HttpResponseRedirect(request.path_info)
->>>>>>> 27970eaed3d6e40c14e35a383fd6b296fe18ed6c
     context = {
         'questions': questions,
         'comments': comments,
         'topics': topics,
-<<<<<<< HEAD
         'page_obj': page_obj,
-=======
         'form': form,
->>>>>>> 27970eaed3d6e40c14e35a383fd6b296fe18ed6c
     }
     # print(questions)
 
