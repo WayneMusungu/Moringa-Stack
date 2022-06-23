@@ -83,25 +83,25 @@ WSGI_APPLICATION = 'moringa.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'moringastackers',
-        'USER': 'wayne',
-    'PASSWORD':'moringastackers',
-    }
-} 
-
-# DATABASES={
-#    'default':{
-#       'ENGINE':'django.db.backends.postgresql_psycopg2',
-#       'NAME':'dflp84r64errsj',
-#       'USER':'vvrzfzziijlnvt',
-#       'PASSWORD':'114cd76a54ed96e5ae2c039c120709fa84d60dafd577ffefd149bbcd5a8a31c8',
-#       'HOST':'ec2-3-224-8-189.compute-1.amazonaws.com',
-#       'PORT':'5432',
-#    }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'moringastackers',
+#         'USER': 'wayne',
+#     'PASSWORD':'moringastackers',
+#     }
 # } 
+
+DATABASES={
+   'default':{
+      'ENGINE':'django.db.backends.postgresql_psycopg2',
+      'NAME':'dflp84r64errsj',
+      'USER':'vvrzfzziijlnvt',
+      'PASSWORD':'114cd76a54ed96e5ae2c039c120709fa84d60dafd577ffefd149bbcd5a8a31c8',
+      'HOST':'ec2-3-224-8-189.compute-1.amazonaws.com',
+      'PORT':'5432',
+   }
+} 
 
 
 # Password validation

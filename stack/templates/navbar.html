@@ -21,18 +21,14 @@
         style="height: 55px; width: 55px; margin-left: 20px;"
       />
         <li class="nav-item">
-          <!-- <a style=" margin-top: 5px; margin-left:2px; color: #1D3354;" class="nav-link active text-dark" aria-current="page" href="/home">STACK</a> -->
-            
-          <h2 style=" margin-top: 5px; margin-left: 5px; color: #1D3354;"aria-current="page">STACK</h2>
+          <a style=" margin-top: 5px; margin-left:2px; color: #1D3354;" class="nav-link active text-dark" aria-current="page" href="/home">STACK</a>
         </li>
-        <li class="nav-item">
-          <a style="margin-left: 20px;" class="nav-link active text-dark" aria-current="page" href="/home">Home</a>
-        </li>
-        <form class="d-flex">
+       
+        <form class="d-flex" action="{% url 'home' %}">
           <input
             class="form-control me-2"
             type="search"
-            name="query"
+            name="q"
             placeholder="Search..."
             aria-label="Search"
             style="margin-left: 350px;"
