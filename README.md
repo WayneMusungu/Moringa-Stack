@@ -64,7 +64,7 @@ Run test using the following command
 
 
 ```
- ./manage.py test d3i4e9jkm01qd2
+ ./manage.py test dflp84r64errsj
 ```
 
 [Go Back to the top](#MORINGA-STACK)
