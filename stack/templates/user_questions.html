@@ -8,7 +8,27 @@
       </div>
     </div>
     <div class="col-7">
-        <h2>Questions posted by: {{user.username}}</h2>
+        <div class="profile">
+          <div class="profile__avatar">
+            <div class="avatar avatar--large active">
+              <img class="image-fluid avatar-img" src="{{user.profile.profile_picture.url}}" alt="{{user.username}} profile pic"/>
+            </div>
+          </div>
+          <div class="profile__info">
+            <h3>{{user.email}}</h3>
+            <p>@{{user.username}}</p>
+            {% if request.user == user %}
+            <a href="{% url '#' %}" class="btn btn--main btn--pill">Edit Profile</a>
+            {% endif %}
+          </div>
+          <div class="profile__about">
+            <h3>About</h3>
+            <p>
+              {{user.bio}}
+            </p>
+          </div>
+        </div>
+        <h3>Questions posted: </h3>
         {% include 'feed_component.html'%}
     </div>
     <div class="col">
