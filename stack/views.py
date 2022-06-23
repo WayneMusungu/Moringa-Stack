@@ -100,7 +100,7 @@ def userQuestions(request,pk):
     comments = user.comment_set.all()
 
     context = {
-        'user':user,
+        'poster':user,
         'questions':questions,
         'topics':topics,
         'comments': comments
