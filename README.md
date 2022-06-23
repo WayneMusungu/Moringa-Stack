@@ -16,6 +16,7 @@
 ## Description
 
 Moringa-stack allows the user to post a question in any programming language and view on a different page different response on how to solve the error.
+All registered users are able to post a question and comment on any question that might help other user with an error  
 
 #### Technologies used
     - Python 3.8
