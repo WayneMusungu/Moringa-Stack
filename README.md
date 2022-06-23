@@ -74,7 +74,7 @@ Run test using the following command
 
 # License
 
-Copyright (c) 2022 [click to view License](LICENSE)
+Copyright (c) 2022 
 
 
 ## Authors Info
