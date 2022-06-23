@@ -2,7 +2,7 @@
 <div class="container mt-4">
   <div class="row gy-5">
     <div class="col">
-      <div style="background-color: #FFFFFF;" class="border p-2 rounded shadow">
+      <div style="background-color: #FFFFFF; margin-top: 40px;" class="border p-2 rounded shadow">
         <h4 style="color: #1D3354;">Browse all Topics</h4>
         {% include 'topic_component.html'%}
       </div>
@@ -13,6 +13,7 @@
         class="btn btn-dark"
         data-bs-toggle="modal"
         data-bs-target="#myModal"
+        style="background-color: #1D3354;"
       >
         Post Question
       </a>
@@ -23,6 +24,7 @@
       {% include 'activity_component.html'%}
     </div>
   </div>
+</div>{% include 'pagination.html' %} 
 </div>
 <!-- The Modal -->
 <div class="modal" id="myModal">

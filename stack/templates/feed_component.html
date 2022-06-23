@@ -7,17 +7,17 @@
                 <div>
                   <img style="width: 75px; height: 80px;" class="image-fluid rounded-circle account-img-sidebar" src="{{question.user.profile.profile_picture.url}}" alt="{{question.user.username}} profile picture">
                   <strong class="text-gray-dark small">
-                    <a href="{% url 'user-questions' question.user.id %}">
+                    <a style="text-decoration: none; color: #000000;" href="{% url 'user-questions' question.user.id %}">
                       @{{question.user.username}}
                     </a>
                   </strong>
                 </div>
                 <div>
-                  <span class="d-block">{{question.date_created|timesince}}</span>
+                  <span style="color: #000000;" class="d-block">{{question.date_created|timesince}}</span>
                 </div>
               </div>
               <div class="card-body">
-                <h5 class="card-title"><a href="/question/{{question.id}}">{{question.title}}</a></h5>
+                <h5 class="card-title"><a style="text-decoration: none; color: #000000;" href="/question/{{question.id}}">{{question.title}}</a></h5>
                 <!-- Question metadata -->
                 <div class=" d-flex justify-content-between border-top py-3">
                   <div>
@@ -26,7 +26,7 @@
                     comments
                   </div>
                   <div>
-                    <small class="bg-dark text-white p-2 rounded-pill">
+                    <small style="background-color: #D4E4BC;" class="text-#000000 p-2 rounded-pill">
                       {{question.topic}}
                     </small>
                   </div>

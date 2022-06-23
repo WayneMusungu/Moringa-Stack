@@ -14,16 +14,34 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <img
+        class="img-responsive rounded-pill"
+        src="https://res.cloudinary.com/dhmbjiskt/image/upload/v1655916831/moringa_e38ypl.png"
+        alt=""
+        style="height: 55px; width: 55px; margin-left: 20px;"
+      />
         <li class="nav-item">
-          <a class="nav-link active text-dark" aria-current="page" href="/home">Home</a>
+          <a style=" margin-top: 5px; margin-left:2px; color: #1D3354;" class="nav-link active text-dark" aria-current="page" href="/home">STACK</a>
         </li>
+       
+        <form class="d-flex" action="{% url 'home' %}">
+          <input
+            class="form-control me-2"
+            type="search"
+            name="q"
+            placeholder="Search..."
+            aria-label="Search"
+            style="margin-left: 350px;"
+          />
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
         {% if user.is_authenticated %} {% if user.profile.profile_picture %}
         <li class="nav-item">
           <img
             class="img-responsive rounded-pill"
             src="{{user.profile.profile_picture.url}}"
             alt=""
-            style="height: 40px; width: 40px"
+            style= "height: 40px; width: 40px; margin-left: 320px;"
           />
         </li>
         {% else %}
