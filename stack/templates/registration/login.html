@@ -4,9 +4,7 @@
         <!-- Empty div -->
         <div class="col-md-4"></div>
         <div class="col-md-4">
-            {% if form.errors %}
-            <p> Password or Username is incorrect </p>
-            {% endif %}
+           
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="text-center">Login</h3>
@@ -15,7 +13,7 @@
 
                 <div class="panel-body">
 
-                    <form style="color: #FFFFFF;" action="/accounts/login/" method="post">
+                    <form style="color: #000000;" action="/accounts/login/" method="post">
                         {% csrf_token %} {% bootstrap_form form%}
 
                         <div class="form-group">

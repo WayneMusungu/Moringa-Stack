@@ -1,0 +1,142 @@
+{%extends 'base.html'%}{% load static%} {% load bootstrap5 %} {% block content%}
+
+  <div style="margin-top: 20px;" class="container">
+    <div class="row">
+      <div class="col-md-8 detail-quiz">
+        <div class="card detail-card">
+          <div class="card-header">
+            <ul class="list-inline">
+              <li class="list-inline-item item1">
+                {% if question.user.profile.profile_picture %}
+                <img
+                  src="{{question.user.profile.profile_picture.url}}"
+                  alt="pic"
+                  class="img-responsive rounded-pill detail-pic"
+                />
+                {% else %}
+                <img
+                  src="{% static 'images/avatar.jpeg'%}"
+                  alt="pic"
+                  class="img-responsive rounded-pill detail-pic"
+                />
+                {% endif %}
+              </li>
+              <li class="list-inline-item item2">
+                <p>@{{question.user.username|title}}</p>
+              </li>
+              <li class="list-inline-item item3">
+                <h5 class="text-center">{{question.title}}</h5>
+              </li>
+              <li class="list-inline-item detail-date">
+                <small class="text-muted"
+                  >{{question.date_created|timesince}}</small
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="card-body detail-cardbody">
+            <h5 class="card-tittle">{{question.description|title}}</h5>
+            {% if question.image %}
+
+            <img
+              src="{{question.image.url}}"
+              alt=""
+              class="img-responsive detail-image"
+            />
+            {% else %}
+            <p>No Screenshot for this Question.</p>
+            {% endif %}
+          </div>
+
+          <div class="card-footer container text-muted">
+            <span class="detail-com"
+              ><!-- Button to Open the Modal -->
+              <a data-bs-toggle="modal" data-bs-target="#myModal">
+                <i class="fa-solid fa-comments"></i> </a
+              >{{question.comment.count}} comments</span
+            >
+            <span class="detail-topic text-dark">{{question.topic}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 detail-comment">
+        {% if comments %}{% for comment in comments %}
+        <div class="card comment-card">
+          <div class="card-header">
+            <ul class="list-inline">
+              <li class="list-inline-item item1">
+                {% if user.profile.profile_picture %}
+                <img
+                  src="{{user.profile.profile_picture.url}}"
+                  alt="pic"
+                  class="img-responsive rounded-pill detail-pic"
+                />
+                {% else %}
+                <img
+                  src="{% static 'images/avatar.jpeg'%}"
+                  alt="pic"
+                  class="img-responsive rounded-pill detail-pic"
+                />
+                {% endif %}
+              </li>
+              <li class="list-inline-item item5">
+                @{{comment.user.username|title}}
+                <small class="text-muted">
+                  {{comment.date_created|timesince}}</small
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="card-body">{{comment.content}}</div>
+        </div>
+        {% endfor %}{% endif %}
+      </div>
+    </div>
+  </div>
+
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Add Comment</h4>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form method="POST">
+          {% csrf_token %}
+
+          <div class="form-group">
+            <label for="content" class="form-label"
+              >{{form.content.label}}:</label
+            ><br />
+            {{form.content}}
+          </div>
+
+          <br />
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button class="btn btn-primary btn-sm" type="submit">Comment</button>
+            <button
+              type="button"
+              class="btn btn-danger btn-sm"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
