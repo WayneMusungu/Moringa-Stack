@@ -91,10 +91,10 @@ Copyright (c) 2022 [click to view License](LICENSE)
 
 * **Victor Ondari** - [Victor Ondari](https://github.com/VictorOndari)
 
-* **edah-hub** - [edah-hub](https://github.com/edah-hub)
+* **Edah Chepngetich** - [edah-hub](https://github.com/edah-hub)
 
 
-* **haimy254** - [haimy254](https://github.com/haimy254)
+* **Haimana Uta** - [haimy254](https://github.com/haimy254)
 
 
 [Go Back to the top](#MORINGA-STACK)
