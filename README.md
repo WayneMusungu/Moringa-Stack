@@ -15,7 +15,7 @@
 
 ## Description
 
-Moringa-stack allow user to access to qualitatives and very well curated batch of answers. First of all, it allows user to filter answers who fit with your points of interest . 
+Moringa-stack 
 This application allows the user to post a question in any programming language and view on a different page different response on how to solve the error.
 
 #### Technologies used
