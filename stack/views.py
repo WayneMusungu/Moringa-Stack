@@ -75,6 +75,7 @@ def logout_user(request):
     logout(request)
     return render(request,'welcome.html')
 
+@login_required(login_url='/accounts/login/')
 def quiz(request, id):
     question = Question.objects.get(id=id)
     comments = Comment.filter_by_question(question.id)
@@ -91,7 +92,7 @@ def quiz(request, id):
         form = CommentForm()
     return render(request, 'detail_post.html', locals())
 
-
+@login_required(login_url='/accounts/login/')
 def userQuestions(request,pk):
     user = User.objects.get(id=pk)
     questions = user.question_set.all()

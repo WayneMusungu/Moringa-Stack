@@ -1,4 +1,7 @@
 
+{% for question in page_obj %}
+{{ question.full_name|upper }}<br>
+{% endfor %}
 <nav class=mt-5>
     <ul class="pagination justify-content-center">
         {% if page_obj.has_previous %}
