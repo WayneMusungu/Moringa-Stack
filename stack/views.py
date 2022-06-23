@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from . models import Profile, Question, Comment, Topic
 from .forms import CommentForm, ProfileForm, QuestionForm
 from django.db.models import Q #allow chaining of queries
+from django.core.paginator import Paginator
 from django.contrib.auth.models import User
 
 
@@ -30,6 +31,9 @@ def home(request):
 
     comments = Comment.objects.all()
     topics = Topic.objects.all()
+    paginator = Paginator(questions,2) # shows 4 questions per page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
     form=QuestionForm()
     if request.method == 'POST':
         form=QuestionForm(request.POST, request.FILES)
@@ -42,8 +46,13 @@ def home(request):
         'questions': questions,
         'comments': comments,
         'topics': topics,
+        'page_obj': page_obj,
         'form': form,
     }
+    # print(questions)
+
+    # ,{'page_obj': page_obj}
+
     return render(request, 'home.html',context)
 
 
