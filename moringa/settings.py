@@ -96,6 +96,7 @@ WSGI_APPLICATION = 'moringa.wsgi.application'
 # } 
 
 
+
 MODE=config("MODE", default="dev")
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
