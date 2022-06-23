@@ -31,7 +31,7 @@ def home(request):
 
     comments = Comment.objects.all()
     topics = Topic.objects.all()
-    paginator = Paginator(questions,2) # shows 4 questions per page
+    paginator = Paginator(questions,4) # shows 4 questions per page
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     form=QuestionForm()
