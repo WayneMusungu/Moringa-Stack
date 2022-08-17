@@ -27,6 +27,7 @@ def home(request):
         Q(user__username__icontains=q) |
         Q(description__icontains=q) |
         Q(title__icontains=q)
+        
     )
 
     comments = Comment.objects.all()
