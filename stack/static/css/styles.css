@@ -169,3 +169,15 @@
     color: var(--color-dark-light);
     margin-bottom: 0.5rem;
   }
+
+  .welcome-center{
+    text-align: center;
+  }
+
+  .welcome-center img{
+    max-width: 100%; 
+    width: auto; 
+    height: auto;
+    border-radius: 10px;
+  }
+

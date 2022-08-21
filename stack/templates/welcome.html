@@ -1,34 +1,34 @@
 {%extends 'base.html'%} 
- 
-  {% load static%} 
   {% block content%}
   <div class="container">
 
-    <div class="info">
+    <h1
+    style="text-align: center; margin-right: 50px; font-family: 'Lobster Two', cursive; margin-top: 20px; color: #1D3354;">
+    WELCOME TO MORINGA STACK
+  </h1>
+  <h2
+    style="text-align: center; margin-right: 50px; font-family: 'Lobster Two', cursive; margin-top: 20px; color: #1D3354;">
+    YOU GOT BUGS, WE GOT THE SOLUTION</h2>
 
-      <h1
-        style="text-align: center; margin-right: 50px; font-family: 'Lobster Two', cursive; margin-top: 20px; color: #1D3354;">
-        WELCOME TO MORINGA STACK
-      </h1>
-      <h2
-        style="text-align: center; margin-right: 50px; font-family: 'Lobster Two', cursive; margin-top: 20px; color: #1D3354;">
-        YOU GOT BUGS, WE GOT THE SOLUTION</h2>
-
-      <div class="container">
-        <div style="text-align: center;" class="center">
-          <img src="https://res.cloudinary.com/dhmbjiskt/image/upload/v1655966393/kill_bugs_ttqouj.gif" alt=""
-            style="width: 500px; height: 500px; border-radius: 10px;">
-        </div>
-        <div class="form-row text-center">
-          <div class="col-12">
-            <a href="/accounts/register"><button style="background-color: #1D3354; color: #FFFFFF; margin-top: 20px;"
-                class="btn btn btn-lg" role="button">SIGN UP</button></a></p>
-          </div>
-        </div>
-
-
-      </div>
-
+    <div  class="welcome-center">
+      <img src="https://res.cloudinary.com/dhmbjiskt/image/upload/v1655966393/kill_bugs_ttqouj.gif" alt=""
+      >
     </div>
+    <div class="form-row text-center">
+      <div class="col-12">
+        <a href="/accounts/register"><button style="background-color: #1D3354; color: #FFFFFF; margin-top: 20px;"
+            class="btn btn btn-lg" role="button">SIGN UP</button></a></p>
+      </div>
+    </div>
+
+
+  </div>
+
+  
+
+     
+
+      
+
     
     {% endblock %}
