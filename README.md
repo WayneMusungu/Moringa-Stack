@@ -101,20 +101,13 @@ SOFTWARE.
 
 ## Authors Info
 
-
 * **Wayne Musungu** - [WayneMusungu](https://github.com/WayneMusungu)
-
 
 * **Clinton Wambugu** - [Clinton-dev](https://github.com/Clinton-dev)
 
-
 * **James Musembi** - [JamesMusembi](https://github.com/JamesMusembi)
 
-
 * **Victor Ondari** - [Victor Ondari](https://github.com/VictorOndari)
-
-* **Edah Chepngetich** - [edah-hub](https://github.com/edah-hub)
-
 
 * **Haimana Uta** - [haimy254](https://github.com/haimy254)
 
