@@ -1,9 +1,5 @@
 # MORINGA-STACK
 
-#### By Wayne Musungu, Edah Chepngetich, Victor Makori, Haimana Uta, Clinton Wambungu and James Musembi
-
-
-
 ## Table of Content
 
 - [Description](#Description)
@@ -99,7 +95,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
-## Authors Info
+## Authors-Info
 
 * **Wayne Musungu** - [WayneMusungu](https://github.com/WayneMusungu)
 
