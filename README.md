@@ -7,7 +7,7 @@
 - [Technologies Used](#Technologies-Used)
 - [Reference](#Reference)
 - [Licence](#LICENSE)
-- [Authors Info](#Author-Info)
+- [Authors-Info](#Author-Info)
 
 ## Description
 
