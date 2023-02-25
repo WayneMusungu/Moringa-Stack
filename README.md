@@ -64,9 +64,9 @@ python3.8 manage.py runserver
 ```
 Open [localhost:8000](http://127.0.0.1:8000/)
 
-## Running the tests
+<!-- ## Running the tests
 
-Run test using the following command
+Run test using the following command -->
 
 
 ```
