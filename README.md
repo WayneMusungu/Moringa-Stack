@@ -16,10 +16,12 @@
 ## Description
 
 Moringa-stack allows the user to post a question in any programming language and view on a different page different response on how to solve the error.
-All registered users are able to post a question and comment on any question that might help other user with an error  
+All registered users are able to post a question and comment on any question that might help other user with an error
+![LANDING PAGE](moringastack.png)
 
-#### Livelink
-https://moringastack.herokuapp.com/
+
+<!--#### Livelink
+https://moringastack.herokuapp.com/  -->
 
 
 #### Technologies used
@@ -39,7 +41,7 @@ https://moringastack.herokuapp.com/
 
 Either a computer,phone,tablet or an Ipad
 Make sure you have access to internet
-Click on the live link in the about section 
+Click on the live link in the about section
 
 #### Install dependancies
 Install dependancies that will create an environment for the app to run
@@ -48,7 +50,7 @@ Install dependancies that will create an environment for the app to run
 #### Create the Database
 In a new terminal, open the postgresql shell with `psql`.
 ```bash
-CREATE DATABASE moringastackers; 
+CREATE DATABASE moringastackers;
 ```
 
 #### Make and run migrations
