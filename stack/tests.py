@@ -1,83 +1,46 @@
-from turtle import title
 from django.test import TestCase
-from .models import *
+from django.contrib.auth.models import User
+from .models import Profile, Topic, Question, Comment
 
-# Create your tests here.
-class ProfileTest(TestCase):
+class ModelsTest(TestCase):
     def setUp(self):
-        self.new_user = User(username='victor')
-        self.new_user.save()
-        self.new_profile = Profile(email='v@g.com',profile_picture='images/picture.jpeg',bio='i love expo',user=self.new_user)
-        self.new_profile.save()
+        self.user = User.objects.create_user(
+            username='testuser',
+            email='test@example.com',
+            password='testpassword'
+        )
+        self.topic = Topic.objects.create(name='Python')
+        self.question = Question.objects.create(
+            topic=self.topic,
+            user=self.user,
+            title='Test Question',
+            description='Test Description'
+        )
+        self.comment = Comment.objects.create(
+            question=self.question,
+            user=self.user,
+            content='Test Comment'
+        )
+        self.profile = Profile.objects.create(
+            user=self.user,
+            bio='Test Bio',
+            email='testuser@example.com'
+        )
 
-    def tearDown(self):
-        Profile.objects.all().delete()
+    def test_question_str(self):
+        self.assertEqual(str(self.question), 'Test Question')
 
-    def test_save_profile(self):
-        self.assertTrue(len(Profile.objects.all()) == 1)     
+    def test_comment_str(self):
+        self.assertEqual(str(self.comment), 'Test Comment')
 
-    def test_delete_profile(self):
-        self.new_profile.save()
-        self.new_profile.delete()
-        self.assertTrue(len(Profile.objects.all()) == 0)    
-
-class QuestionTest(TestCase):
-    def setUp(self):
-        categories=(('javascript','javascript'),
-                ('Python','Python'),
-                ('C++','C++'),
-                ('C','C'),
-                ('PHP','PHP'))
-        self.new_user = User(username='victor')
-        self.new_user.save()
-        self.new_question = Question(user=self.new_user, title='requirements', description='requirements not installing', topic='python')
-        self.new_question.save()
-
-    def tearDown(self):
-        Question.objects.all().delete()
-
-    def test_save_question(self):
-        self.assertTrue(len(Question.objects.all()) == 1)     
-
-    def test_delete_question(self):
-        self.new_question.save()
-        self.new_question.delete()
-        self.assertTrue(len(Question.objects.all()) == 0)    
+    def test_profile_str(self):
+        self.assertEqual(str(self.profile), 'testuser')
 
     def test_get_question_by_id(self):
-        obtained_question = Question.get_question_by_id(self.new_question.id)
-        print(obtained_question)
+        question = Question.get_question_by_id(self.question.id)
+        self.assertEqual(question, self.question)
 
-
-
-
-
-class CommentTest(TestCase):
-    def setUp(self):
-        self.new_user = User(username='victor')
-        self.new_user.save()
-        self.new_profile = Profile(email='v@g.com',profile_picture='images/picture.jpeg',bio='i love expo',user=self.new_user)
-        self.new_profile.save()
-        self.another_user = User(username='james')
-        self.another_user.save()
-        self.new_question = Question(title='requirements', description='requirements not installing',topic='python', user=self.another_user)
-        self.new_question.save()
-        
-        self.new_comment = Comment(user=self.new_profile, question=self.new_question,content='haziwezi install')
-        self.new_comment.save()
-
-    def tearDown(self):
-        Comment.objects.all().delete()
-
-    def test_save_comment(self):
-        self.assertTrue(len(Comment.objects.all()) == 1)     
-
-    def test_delete_comment(self):
-        self.new_comment.save()
-        self.new_comment.delete()
-        self.assertTrue(len(Comment.objects.all()) == 0)    
-
-    def test_filter_by_user(self):
-        obtained_comment = Comment.filter_by_question(self.new_comment.question.id).all()
-        print(obtained_comment)
-
+    def test_filter_by_question(self):
+        comments = Comment.filter_by_question(self.question.id)
+        self.assertEqual(comments.count(), 1)
+        self.assertEqual(comments[0], self.comment)
